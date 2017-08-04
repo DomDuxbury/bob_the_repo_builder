@@ -1,0 +1,15 @@
+#! /bin/bash
+
+git stash -q --keep-index
+
+pytest
+TESTRESULT=$?
+
+flake8
+LINTRESULT=$?
+
+git stash pop -q
+
+[ $TESTRESULT -ne 0 ] || [ $LINTRESULT -ne 0 ] && exit 1
+
+exit 0

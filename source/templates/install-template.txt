@@ -1,0 +1,6 @@
+#!/bin/bash
+cd create_config
+python create_config.py
+cd ..
+rm .git/hooks/pre-commit
+ln pre-commit.sh .git/hooks/pre-commit
