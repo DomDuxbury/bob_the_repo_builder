@@ -1,4 +1,5 @@
 # {{ title }}
+
 What is the purpose of this project?
 What version of Python do we use?
 Is there any linting?
