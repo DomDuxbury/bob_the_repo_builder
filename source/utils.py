@@ -5,7 +5,7 @@ def ask_question(question):
 
     print question
     answer = stdin.readline()
-    return answer
+    return answer.strip()
 
 
 def ask_yes_no_question(question):
@@ -15,9 +15,9 @@ def ask_yes_no_question(question):
     """
     valid_response = False
     while not valid_response:
-        answer = ask_question(question)
-        if answer == "y\n":
+        answer = ask_question(question + " (y/n)")
+        if answer == "y":
             valid_response = True
-        if answer == "n\n":
+        if answer == "n":
             valid_response = True
-    return answer == "y\n"
+    return answer == "y"
