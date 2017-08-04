@@ -1,8 +1,8 @@
 # {{ title }}
 
-What is the purpose of this project?
-What version of Python do we use?
-Is there any linting?
+Python Version: {{ python_ver }}
+Linting: {{ lint }}
+Test: {{ test }}
 
 ## Getting Started
 
