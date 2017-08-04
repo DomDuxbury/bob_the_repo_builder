@@ -1,9 +1,9 @@
-from sys import stdin
+import utils
 
 
 def main():
-    user_input = stdin.readline()
-    print user_input
+    age = utils.ask_question("How old are you")
+    print age
 
 
 if __name__ == "__main__":
