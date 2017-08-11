@@ -1,4 +1,4 @@
-# {{ title }}
+# {{ name }}
 
 Python Version: {{ python_ver }}
 Linting: {{ lint }}
