@@ -3,21 +3,6 @@ import os
 import subprocess
 from shutil import copyfile
 
-# {'git': False, 'venv': False, 'name': 'joezcool',
-# 'flake': False, 'pytest': False}
-
-# Create and run Bash
-# Create project folder
-# Create Venv
-# Install flake8
-# Install pytest
-# Create requirements.txt
-# Initialise git
-# Install pytest watch
-# Install precommit hooks
-# Create README
-# Create gitignore
-
 
 def magic(file_path):
     mode = os.stat(file_path).st_mode
@@ -47,7 +32,8 @@ def create_repo(set_up):
 
     if set_up['hooks']:
         precommit_template = './render/templates/pre-commit-template.txt'
-        precommit_output = set_up['name'] + '/' + 'prei-commit.sh'
+        precommit_output = set_up['name'] + '/' + 'pre-commit.sh'
         copyfile(precommit_template, precommit_output)
+        magic(precommit_output)
 
     run_install_script(set_up)
