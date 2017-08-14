@@ -33,11 +33,16 @@ def ask_all_questions():
                 "Do you want flake8 linting enabled?")
         pytest = utils.ask_yes_no_question(
                 "Do you want pytest to be installed?")
+    else:
+        flake = False
+        pytest = False
 
     git = utils.ask_yes_no_question("Do you want to initialise a git repo?")
     if git:
         hooks = utils.ask_yes_no_question(
                 "Do you want to initialise a git hooks?")
+    else:
+        hooks = False
 
     return {
         "name": project_name,
