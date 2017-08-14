@@ -1,8 +1,9 @@
 #!/bin/bash
 
+{% if venv %}
+
 # Create virtualenv
 source $HOME/.local/bin/virtualenvwrapper.sh
-{% if venv %}
 mkvirtualenv {{ name }}
 
 {% if flake %}
@@ -27,7 +28,10 @@ pip freeze > requirements.txt
 # Initialise git
 git init
 
+{% if hooks %}
 # Install pre-commit hook
 rm .git/hooks/pre-commit
 ln pre-commit.sh .git/hooks/pre-commit
+{% endif %}
+
 {% endif %}

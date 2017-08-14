@@ -1,6 +1,7 @@
 import utils
 import os
 import subprocess
+from shutil import copyfile
 
 # {'git': False, 'venv': False, 'name': 'joezcool',
 # 'flake': False, 'pytest': False}
@@ -43,5 +44,10 @@ def create_repo(set_up):
         readme_output = set_up['name'] + '/' + 'README.md'
         readme_loc = template_folder + 'README-template.txt'
         utils.render(readme_loc, readme_output, set_up)
+
+    if set_up['hooks']:
+        precommit_template = './render/templates/pre-commit-template.txt'
+        precommit_output = set_up['name'] + '/' + 'prei-commit.sh'
+        copyfile(precommit_template, precommit_output)
 
     run_install_script(set_up)
