@@ -9,19 +9,6 @@ def main():
     create_repo(set_up)
 
 
-# Create and run Bash
-    # Create project folder
-    # Create Venv
-    # Install flake8
-    # Install pytest
-    # Create requirements.txt
-    # Initialise git
-    # Install pytest watch
-    # Install precommit hooks
-# Create README
-# Create gitignore
-
-
 def ask_all_questions():
 
     project_name = utils.ask_question("name:")
