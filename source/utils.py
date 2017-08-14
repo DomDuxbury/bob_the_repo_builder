@@ -1,9 +1,10 @@
+from __future__ import print_function
 from sys import stdin
 
 
 def ask_question(question):
 
-    print question
+    print(question, end=' ')
     answer = stdin.readline()
     return answer.strip()
 
