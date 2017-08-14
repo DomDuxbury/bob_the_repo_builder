@@ -1,21 +1,7 @@
 import utils
 import os
 import subprocess
-
-# {'git': False, 'venv': False, 'name': 'joezcool',
-# 'flake': False, 'pytest': False}
-
-# Create and run Bash
-# Create project folder
-# Create Venv
-# Install flake8
-# Install pytest
-# Create requirements.txt
-# Initialise git
-# Install pytest watch
-# Install precommit hooks
-# Create README
-# Create gitignore
+from shutil import copyfile
 
 
 def magic(file_path):
@@ -43,5 +29,11 @@ def create_repo(set_up):
         readme_output = set_up['name'] + '/' + 'README.md'
         readme_loc = template_folder + 'README-template.txt'
         utils.render(readme_loc, readme_output, set_up)
+
+    if set_up['hooks']:
+        precommit_template = './render/templates/pre-commit-template.txt'
+        precommit_output = set_up['name'] + '/' + 'pre-commit.sh'
+        copyfile(precommit_template, precommit_output)
+        magic(precommit_output)
 
     run_install_script(set_up)
