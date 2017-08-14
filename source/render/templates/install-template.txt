@@ -1,37 +1,27 @@
 #!/bin/bash
-
 {% if venv %}
-
 # Create virtualenv
 source $HOME/.local/bin/virtualenvwrapper.sh
 mkvirtualenv {{ name }}
-
 {% if flake %}
 # Install flake8
 pip install flake8
 {% endif %}
-
 {% if pytest %}
 # Install pytest
 pip install pytest
-
 # Install pytest-watch
 pip install pytest-watch
 {% endif %}
-
 # Create requirements.txt
 pip freeze > requirements.txt
-
 {% endif %}
-
 {% if git %}
 # Initialise git
 git init
-
 {% if hooks %}
 # Install pre-commit hook
 rm .git/hooks/pre-commit
 ln pre-commit.sh .git/hooks/pre-commit
 {% endif %}
-
 {% endif %}
