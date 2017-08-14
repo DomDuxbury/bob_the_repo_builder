@@ -19,19 +19,19 @@ def run_install_script(set_up):
 
 
 def create_install_script(set_up, install_output):
-    install_loc = './render/templates/install-template.txt'
+    install_loc = './source/render/templates/install-template.txt'
     utils.render(install_loc, install_output, set_up)
 
 
 def create_repo(set_up):
-    template_folder = './render/templates/'
+    template_folder = './source/render/templates/'
     if set_up['readme']:
         readme_output = set_up['name'] + '/' + 'README.md'
         readme_loc = template_folder + 'README-template.txt'
         utils.render(readme_loc, readme_output, set_up)
 
     if set_up['hooks']:
-        precommit_template = './render/templates/pre-commit-template.txt'
+        precommit_template = template_folder + 'pre-commit-template.txt'
         precommit_output = set_up['name'] + '/' + 'pre-commit.sh'
         copyfile(precommit_template, precommit_output)
         magic(precommit_output)
