@@ -17,12 +17,9 @@ def ask_all_questions():
     venv = utils.ask_yes_no_question("Initialise a virtual environment?")
 
     if venv:
-        flake = utils.ask_yes_no_question(
-                "Do you want flake8 linting enabled?")
         pytest = utils.ask_yes_no_question(
                 "Do you want pytest to be installed?")
     else:
-        flake = False
         pytest = False
 
     git = utils.ask_yes_no_question("Do you want to initialise a git repo?")
@@ -35,7 +32,6 @@ def ask_all_questions():
     return {
         "name": project_name,
         "venv": venv,
-        "flake": flake,
         "pytest": pytest,
         "readme": readme,
         "git": git,

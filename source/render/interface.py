@@ -23,12 +23,17 @@ def create_install_script(set_up, install_output):
     utils.render(install_loc, install_output, set_up)
 
 
+def render_template(set_up, template_folder,
+                    output_location, template_location):
+    utils.render(output_location, output_location, set_up)
+
+
 def create_repo(set_up):
     template_folder = './source/render/templates/'
     if set_up['readme']:
-        readme_output = set_up['name'] + '/' + 'README.md'
-        readme_loc = template_folder + 'README-template.txt'
-        utils.render(readme_loc, readme_output, set_up)
+        render_template(set_up, template_folder,
+                        set_up['name'] + '/' + 'README.md',
+                        template_folder + 'README-template.txt')
 
     if set_up['hooks']:
         precommit_template = template_folder + 'pre-commit-template.txt'
@@ -36,14 +41,14 @@ def create_repo(set_up):
         copyfile(precommit_template, precommit_output)
         magic(precommit_output)
 
-    # make dummy test
-    readme_output = set_up['name'] + '/' + '.gitignore'
-    readme_loc = template_folder + 'gitignore-template.txt'
-    utils.render(readme_loc, readme_output, set_up)
+    # make gitignore
+    render_template(set_up, template_folder,
+                    set_up['name'] + '/' + '.gitignore',
+                    template_folder + 'gitignore-template.txt')
 
-    # make .gitignore
-    readme_output = set_up['name'] + '/tests/' + 'test_dummy.py'
-    readme_loc = template_folder + 'test-dummy-template.txt'
-    utils.render(readme_loc, readme_output, set_up)
+    # make dummy test
+    render_template(set_up, template_folder,
+                    set_up['name'] + '/tests/' + 'test_dummy.py',
+                    template_folder + 'test-dummy-template.txt')
 
     run_install_script(set_up)

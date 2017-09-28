@@ -3,10 +3,6 @@
 # Create virtualenv
 source $HOME/.local/bin/virtualenvwrapper.sh
 mkvirtualenv {{ name }}
-{% if flake %}
-# Install flake8
-pip install flake8
-{% endif %}
 {% if pytest %}
 # Install pytest
 pip install pytest
