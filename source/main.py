@@ -6,6 +6,7 @@ from render.interface import create_repo
 def main():
     set_up = ask_all_questions()
     os.mkdir(set_up["name"])
+    os.mkdir(set_up["name"] + '/tests')
     create_repo(set_up)
 
 

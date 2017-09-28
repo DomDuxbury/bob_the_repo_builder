@@ -36,4 +36,9 @@ def create_repo(set_up):
         copyfile(precommit_template, precommit_output)
         magic(precommit_output)
 
+    # make dummy test
+    readme_output = set_up['name'] + '/tests/' + 'test_dummy.py'
+    readme_loc = template_folder + 'test-dummy-template.txt'
+    utils.render(readme_loc, readme_output, set_up)
+
     run_install_script(set_up)
