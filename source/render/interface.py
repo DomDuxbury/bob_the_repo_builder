@@ -23,15 +23,15 @@ def create_install_script(set_up, install_output):
     utils.render(install_loc, install_output, set_up)
 
 
-def render_template(set_up, template_folder,
-                    output_location, template_location):
+def render_template(set_up, output_location, template_location,
+                    template_folder='./source/render/templates/'):
     utils.render(output_location, output_location, set_up)
 
 
 def create_repo(set_up):
     template_folder = './source/render/templates/'
     if set_up['readme']:
-        render_template(set_up, template_folder,
+        render_template(set_up,
                         set_up['name'] + '/' + 'README.md',
                         template_folder + 'README-template.txt')
 
@@ -42,12 +42,12 @@ def create_repo(set_up):
         magic(precommit_output)
 
     # make gitignore
-    render_template(set_up, template_folder,
+    render_template(set_up,
                     set_up['name'] + '/' + '.gitignore',
                     template_folder + 'gitignore-template.txt')
 
     # make dummy test
-    render_template(set_up, template_folder,
+    render_template(set_up,
                     set_up['name'] + '/tests/' + 'test_dummy.py',
                     template_folder + 'test-dummy-template.txt')
 
